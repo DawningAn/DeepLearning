@@ -1,11 +1,10 @@
 # -*- coding = utf-8 -*-
 # @Time : 2022/9/11 21:54
 # @Author : Juyi
-# @File : 激活函数_阶跃函数.py
+# @File : 阶跃函数.py
 # @Software : PyCharm
 import numpy as np
 import matplotlib.pyplot as plt
-
 
 # 阶跃函数的图
 # 当输入超过0时，输出1，否则输出0
