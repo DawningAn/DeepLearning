@@ -1,7 +1,7 @@
 # -*- coding = utf-8 -*-
 # @Time : 2022/4/17 21:56
 # @Author : Juyi
-# @File : test01.py
+# @File : 神经网络的内积.py
 # @Software : PyCharm
 import sklearn
 from sklearn.datasets import load_iris
