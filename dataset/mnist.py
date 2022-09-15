@@ -8,6 +8,7 @@ import gzip
 import pickle
 import os
 import numpy as np
+import socket
 
 
 url_base = 'http://yann.lecun.com/exdb/mnist/'
@@ -125,4 +126,10 @@ def load_mnist(normalize=True, flatten=True, one_hot_label=False):
 
 
 if __name__ == '__main__':
+    socket.setdefaulttimeout(600)
+
+    # 括号参数
+    # 1：开启保活机制
+    # 60 * 1000：一分钟如果对方还没有反应，就开始探测连接是否存在
+    # 30 * 1000：60秒探测一次，默认探测10次，失败则断开
     init_mnist()
