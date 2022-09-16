@@ -97,7 +97,7 @@ for i in range(0, len(x), batch_size):
     p = np.argmax(y_batch, axis = 1)
     accuracy_cnt += np.sum(p == t[i:i+batch_size])  # 比较运算符（==）生成由True/False构成的布尔型数组，并计算True的个数
 
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
+print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
 # TypeError: only integer scalar arrays can be converted to a scalar index
 '''
 这是因为最新版本的python、numpy的问题。版本升级，有些方法已经发生改变，使将单个元素数组作为标量进行索引成为一个错误
