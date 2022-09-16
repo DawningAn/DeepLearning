@@ -51,8 +51,7 @@ def predict(network, x):
 
     return y
 
-x, t = get_data()
-network = init_network()
+
 
 # Accuracy 精度
 '''
@@ -63,6 +62,10 @@ predict()函数以NumPy数组的形式输出各个标签对应的概率。
 可以用np.argmax(x)函数取出数组中的最大值的索引，np.argmax(x)将获取被赋给参数x的数组中的最大值元素的索引。
 最后，比较神经网络所预测的答案和正确解标签，将回答正确的概率作为识别精度
 '''
+'''
+x, t = get_data()
+network = init_network()
+
 accuracy_cnt = 0
 for i in range(len(x)):
     y = predict(network, x[i])
@@ -70,6 +73,7 @@ for i in range(len(x)):
     if p == t[i]:
         accuracy_cnt += 1  # +1表示当前这个图像（i）已经正确识别
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
+'''
 
 '''
 考虑打包输入多张图像的情形。比如，我们想用predict()函数一次性打包处理100张图像。为此，可以把x的形状改为100 × 784，将100张图像打包作为输入数据
@@ -80,3 +84,22 @@ print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
 
 批处理一次性计算大型数组要比分开逐步计算各个小型数组速度更快
 '''
+# 模拟批处理实现
+x ,t = get_data()
+network = init_network()
+
+batch_size = 100
+accuracy_cnt = 0
+
+for i in range(0, len(x), batch_size):
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch)
+    p = np.argmax(y_batch, axis = 1)
+    accuracy_cnt += np.sum(p == t[i:i+batch_size])  # 比较运算符（==）生成由True/False构成的布尔型数组，并计算True的个数
+
+print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
+# TypeError: only integer scalar arrays can be converted to a scalar index
+'''
+这是因为最新版本的python、numpy的问题。版本升级，有些方法已经发生改变，使将单个元素数组作为标量进行索引成为一个错误
+'''
+
