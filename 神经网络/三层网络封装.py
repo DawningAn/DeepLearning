@@ -98,7 +98,6 @@ def Softmax(x):
 
 '''
 softmax函数的输出是0.0到1.0之间的实数。并且，softmax函数的输出值的总和是1
-
 采用改进的函数如下
 '''
 def Softmax(x):
