@@ -21,8 +21,12 @@ plt.plot(x, y)
 # plt.show()
 
 # 计算fun1函数的导数
-
-print(numerical_diff(fun1,5))  # 求x=5处的导数
+ret = numerical_diff(fun1,5)
+print(ret)  # 求x=5处的导数
 # 20.09999999998513
 
 # 考虑绘制
+diff_y = numerical_diff(fun1,5) * x + (fun1(5) - numerical_diff(fun1,5)*5)
+plt.plot(x,diff_y)
+plt.show()
+
