@@ -9,7 +9,7 @@ img = cv.imread("face1.png")
 # 坐标
 x, y, w, h = 100, 100, 100, 100
 # 绘制矩形
-cv.rectangle(img, (x, y, x + w, y + h), color=(0, 0, 255), thickness=1)
+cv.rectangle(img, (x, y), (x + w, y + h), color=(0, 0, 255), thickness=1)
 # 绘制圆形
 cv.circle(img, center=(x + w, y + h), radius=100, color=(255, 0, 0), thickness=2)
 

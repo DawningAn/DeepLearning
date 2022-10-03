@@ -8,7 +8,7 @@ import cv2 as cv
 # 检测人脸的函数
 # 要读取摄像头的图像
 # cap = cv.VideoCapture(0)  # 0为默认摄像头
-cap = cv.VideoCapture("01.mp4")
+cap = cv.VideoCapture("02.mp4")
 
 
 def face_detectDemo(img):
@@ -17,9 +17,9 @@ def face_detectDemo(img):
     # 加载分类器（做出人脸识别的关键，调用cv里的分类器）
     face_detect = cv.CascadeClassifier(
         'E:/Anaconda/envs/juyi/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')
-    face = face_detect.detectMultiScale(gray, 1.06)  # 多尺度检测  (传入灰度图)
+    face = face_detect.detectMultiScale(gray)  # 多尺度检测  (传入灰度图)
     for x, y, w, h in face:
-        cv.rectangle(img, (x, y, x + w, y + h), color=(0, 0, 255), thickness=1)
+        cv.rectangle(img, (x, y), (x + w, y + h), color=(0, 0, 255), thickness=1)
     cv.imshow('result', img)
 
 

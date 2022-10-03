@@ -14,12 +14,12 @@ def face_detectDemo(img):
         'E:/Anaconda/envs/juyi/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')
     face = face_detect.detectMultiScale(gray,1.1)  # 多尺度检测  (传入灰度图)
     for x, y, w, h in face:
-        cv.rectangle(img, (x, y, x + w, y + h), color=(0, 0, 255), thickness=1)
+        cv.rectangle(img, (x, y), (x + w, y + h), color=(0, 0, 255), thickness=1)
     cv.imshow('result', img)
 
 
-img = cv.imread("face1.jpg")
-face_detectDemo()
+img = cv.imread("11.jpg")
+face_detectDemo(img)
 # 等待(检测到q后退出)
 while True:
     if ord('q') == cv.waitKey(0):
