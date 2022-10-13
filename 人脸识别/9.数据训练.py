@@ -46,6 +46,7 @@ if __name__ == "__main__":
     # 获取人脸特征和ID
     faces, ids = getImageLabel(path)
     # 加载识别器
+    # pip install opencv-contrib-python
     recognizer = cv.face.LBPHFaceRecognizer_create()
     # 训练过程
     recognizer.train(faces, np.array(ids))

@@ -24,13 +24,30 @@ def face_detectDemo(img):
 
 
 # 等待(检测到q后退出)
+
+# while True:
+#     # 其中ret是布尔值，如果读取帧是正确的则返回True，如果文件读取到结尾，它的返回值就为False。frame就是每一帧的图像，是个三维矩阵
+#     flag, frame = cap.read()
+#     if not flag:
+#         break
+#     face_detectDemo(frame)  # 识别每一帧
+#     if ord('q') == cv.waitKey(1):
+#         break
+
+#帧率过低
+c = 0
 while True:
-    # 其中ret是布尔值，如果读取帧是正确的则返回True，如果文件读取到结尾，它的返回值就为False。frame就是每一帧的图像，是个三维矩阵
     flag, frame = cap.read()
-    if not flag:
-        break
-    face_detectDemo(frame)  # 识别每一帧
-    if ord('q') == cv.waitKey(1):
+    # 降低视频采集帧率为每5帧处理一次
+    if flag:
+        if (c % 5 == 0):
+            face_detectDemo(frame)
+        c += 1
+        cv.waitKey(1)
+    else:
         break
 # 释放内存
 cv.destroyAllWindows()
+
+
+
