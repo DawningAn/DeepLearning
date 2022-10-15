@@ -13,4 +13,3 @@ import urllib.request
 recogizer = cv.face.LBPHFaceRecognizer_create()
 #加载数据
 recogizer.read('train/trainer.yml')
-#
