@@ -4,6 +4,8 @@
 # @File : 感知机.py
 # @Software : PyCharm
 import numpy as np
+
+
 # 定义一个接收参数x1和x2的AND函数
 def AND(x1, x2):
     w1, w2, theta = 0.5, 0.5, 0.7
@@ -31,38 +33,43 @@ b = -0.7  # 偏置
 print(w * x)
 print(np.sum(w * x) + b)  # np.sum(w*x)再计算相乘后的各个元素的总和
 
+
 # 使用权重和偏置，可以像下面这样实现与门
-def AND1(x1,x2):
-    x = np.array([x1,x2])
-    w = np.array([0.5,0.5])
+def AND1(x1, x2):
+    x = np.array([x1, x2])
+    w = np.array([0.5, 0.5])
     b = -0.7  # 把−θ命名为偏置b
-    tmp = np.sum(w*x) + b
-    if tmp>0:
+    tmp = np.sum(w * x) + b
+    if tmp > 0:
         return 1
     else:
         return 0
+
+
 # 偏置的值决定了神经元被激活的容易程度
 
 # 继续实现与非门和或门
 def NAND(x1, x2):
     x = np.array([x1, x2])
-    w = np.array([-0.5, -0.5]) # 仅权重和偏置与AND不同！
+    w = np.array([-0.5, -0.5])  # 仅权重和偏置与AND不同！
     b = 0.7
-    tmp = np.sum(w*x) + b
+    tmp = np.sum(w * x) + b
     if tmp <= 0:
         return 0
     else:
         return 1
 
+
 def OR(x1, x2):
     x = np.array([x1, x2])
-    w = np.array([0.5, 0.5]) # 仅权重和偏置与AND不同！
+    w = np.array([0.5, 0.5])  # 仅权重和偏置与AND不同！
     b = -0.2
-    tmp = np.sum(w*x) + b
+    tmp = np.sum(w * x) + b
     if tmp <= 0:
         return 0
     else:
         return 1
+
 
 # 感知机的局限性就在于它只能表示由一条直线分割的空间 (显然其难以实现异或门)
 # 曲线分割而成的空间称为非线性空间，由直线分割而成的空间称为线性空间
@@ -73,4 +80,4 @@ def XOR(x1, x2):
     s2 = OR(x1, x2)
     y = AND(s1, s2)
     return y
-# 异或门是一种多层结构的神经网络。
+# 异或门是一种多层结构的神经网络
