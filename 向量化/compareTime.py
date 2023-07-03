@@ -13,24 +13,25 @@ import time
 np.dot(w, t) + b
 '''
 
-a = np.array([1,2,3,4])
+a = np.array([1, 2, 3, 4])
 
-print(a)
+print("数组a：", a)
+
 start = time.time()
 a = np.random.rand(1000000)
-b = np.random.rand(1000000) #通过round随机得到两个一百万维度的数组
+b = np.random.rand(1000000)  # 通过round随机得到两个一百万维度的数组
 
-c = np.dot(a,b)
+c = np.dot(a, b)
 
 end = time.time()
-print(c)
-print("耗时："+str(end - start)+"s")
+# print(c)
+print("向量dot耗时：" + str(end - start) + "s")
 
-#继续增加非向量化的版本
+# 继续增加非向量化的版本
 c = 0
 start = time.time()
 for i in range(1000000):
-    c += a[i]*b[i]
+    c += a[i] * b[i]
 end = time.time()
 print(c)
-print("耗时：" + str(end - start) + "s")  #打印for循环的版本的时间
+print("非向量化耗时：" + str(end - start) + "s")  # 打印for循环的版本的时间

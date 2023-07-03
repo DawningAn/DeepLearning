@@ -4,7 +4,7 @@
 # @File : ReLU函数.py
 # @Software : PyCharm
 
-# ReLU（Rectified Linear Unit）函数
+# ReLU（Rectified Linear Unit）函数(修正线性单元)
 # ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0
 # 考虑实现
 import numpy as np

@@ -1,9 +1,4 @@
-# -*- coding = utf-8 -*-
-# @Time : 2022/9/14 21:37
-# @Author : Juyi
-# @File : mnistDemo.py
-# @Software : PyCharm
-'''
+''''
 导入mnist数字图片数据集
 '''
 

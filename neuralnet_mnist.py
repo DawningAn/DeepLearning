@@ -6,6 +6,8 @@
 import sys, os
 sys.path.append(os.pardir)
 from dataset.mnist import *
+import matplotlib.pyplot as plt
+
 '''
 推理一下这个神经网络
 该网络的输入层有784个神经元，输出层有10个神经元。输入层的784这个数字来源于图像大小的28 × 28 = 784
@@ -62,18 +64,23 @@ predict()函数以NumPy数组的形式输出各个标签对应的概率。
 可以用np.argmax(x)函数取出数组中的最大值的索引，np.argmax(x)将获取被赋给参数x的数组中的最大值元素的索引。
 最后，比较神经网络所预测的答案和正确解标签，将回答正确的概率作为识别精度
 '''
-'''
+
 x, t = get_data()
 network = init_network()
+
+
 
 accuracy_cnt = 0
 for i in range(len(x)):
     y = predict(network, x[i])
     p = np.argmax(y) # 获取概率最高的元素的索引
+    img = x[0]
+    print("当前图像预测数字值为：", p,";当前图像真实标签值为：", t[i])
+
     if p == t[i]:
         accuracy_cnt += 1  # +1表示当前这个图像（i）已经正确识别
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
-'''
+
 
 '''
 考虑打包输入多张图像的情形。比如，我们想用predict()函数一次性打包处理100张图像。为此，可以把x的形状改为100 × 784，将100张图像打包作为输入数据
@@ -84,6 +91,8 @@ print("Accuracy:" + str(float(accuracy_cnt) / len(x)))  # Accuracy:0.9352
 
 批处理一次性计算大型数组要比分开逐步计算各个小型数组速度更快
 '''
+
+
 # 模拟批处理实现
 x ,t = get_data()
 network = init_network()
